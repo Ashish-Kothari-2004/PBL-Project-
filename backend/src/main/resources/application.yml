@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: bloodbond
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/bloodbond?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
+    username: ${SPRING_DATASOURCE_USERNAME:bloodbond}
+    password: ${SPRING_DATASOURCE_PASSWORD:bloodbond}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+bloodbond:
+  ai:
+    provider: ${BLOODBOND_AI_PROVIDER:mock}
+
+jwt:
+  secret: ${JWT_SECRET:change-me-please-32-char-long-secret-key}
+  expiration-ms: 86400000
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

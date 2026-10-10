@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/bloodbond?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
+    username: ${SPRING_DATASOURCE_USERNAME:bloodbond}
+    password: ${SPRING_DATASOURCE_PASSWORD:bloodbond}
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+bloodbond:
+  admin:
+    email: ${BLOODBOND_ADMIN_EMAIL:admin@bloodbond.local}
+    password: ${BLOODBOND_ADMIN_PASSWORD:BloodBondDevAdmin1!}
