@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # BloodBond
 
 BloodBond is a real-time blood donor and recipient matching platform built with a Spring Boot backend, MySQL database, and a React + TypeScript frontend.
@@ -54,3 +55,6 @@ The `dev` Spring profile seeds an administrator if one does not already exist. S
 - No donor email or phone is returned in match payloads.
 - AI is optional and defaulted to the mock provider.
 - All database changes must be handled via Flyway migrations.
+=======
+# PBL-Project-
+>>>>>>> ca9f5059ac24d055df75ac868b3cb53bfb55700e
