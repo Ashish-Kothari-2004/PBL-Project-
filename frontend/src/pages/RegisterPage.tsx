@@ -20,6 +20,7 @@ export function RegisterPage() {
   const navigate = useNavigate()
   const { register: registerUser } = useAuth()
   const [formError, setFormError] = useState<string | null>(null)
+  const [showPassword, setShowPassword] = useState(false)
   const {
     register,
     handleSubmit,
@@ -61,7 +62,14 @@ export function RegisterPage() {
 
           <label>
             Password
-            <input {...register('password')} type="password" placeholder="At least 8 chars" />
+            <input
+  {...register('password')}
+  type={showPassword ? 'text' : 'password'}
+  placeholder="At least 8 chars"
+/>
+<button type="button" onClick={() => setShowPassword(!showPassword)}>
+  {showPassword ? 'Hide' : 'Show'} Password
+</button>
             {errors.password ? <span>{errors.password.message as string}</span> : null}
           </label>
 
