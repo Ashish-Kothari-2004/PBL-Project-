@@ -44,8 +44,16 @@ export function RegisterPage() {
 
   return (
     <main className="auth-shell">
-      <section className="auth-card">
-        <h1>Create account</h1>
+      <section className="auth-story">
+        <Link className="brand-link" to="/"><span className="brand-mark" aria-hidden="true">B</span><span>bloodbond</span></Link>
+        <h1>Showing up can change <em>everything.</em></h1>
+        <p>Come as you are. Find community, care, and a way to help someone through a difficult moment.</p>
+        <span className="auth-story-note">A little of you can mean a lot to someone.</span>
+      </section>
+      <section className="auth-panel">
+        <p className="eyebrow">A place to begin</p>
+        <h2>Create your account</h2>
+        <p>Join the community, in the way that feels right for you.</p>
         <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
           {formError ? <p role="alert">{formError}</p> : null}
           <label>
@@ -81,12 +89,12 @@ export function RegisterPage() {
             </select>
           </label>
 
-          <button type="submit" disabled={isSubmitting}>
+          <button className="primary-button" type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Creating account...' : 'Create Account'}
           </button>
         </form>
 
-        <p>
+        <p className="auth-switch">
           Already have an account? <Link to="/login">Login</Link>
         </p>
       </section>

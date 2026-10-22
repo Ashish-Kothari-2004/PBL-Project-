@@ -74,10 +74,13 @@ export function DonorProfilePage() {
   return (
     <main className="dashboard-shell">
       <header className="dashboard-header">
-        <div><p className="eyebrow">Donor profile</p><h1>Your details</h1></div>
-        <div className="header-actions"><Link to="/dashboard">Dashboard</Link><button type="button" onClick={logout}>Logout</button></div>
+        <Link className="dashboard-brand" to="/"><span className="brand-mark" aria-hidden="true">B</span><span>bloodbond</span></Link>
+        <div className="header-actions"><Link to="/dashboard">Dashboard</Link><Link to="/chat">Messages</Link><button type="button" onClick={logout}>Sign out</button></div>
       </header>
-      <section className="dashboard-card">
+      <section className="profile-layout">
+        <p className="eyebrow">Donor profile</p>
+        <h2>Your details, your pace.</h2>
+        <p className="note">Only approximate location is shared with nearby recipients. You stay in control of your availability.</p>
         <form className="auth-form" onSubmit={saveProfile}>
           {error ? <p role="alert">{error}</p> : null}
           {message ? <p role="status">{message}</p> : null}
@@ -95,7 +98,7 @@ export function DonorProfilePage() {
           <button type="button" className="secondary-button" onClick={captureLocation}>Use approximate location</button>
           <p className="note">{profile.approxLat === null ? 'Location not set.' : `Approximate location: ${profile.approxLat}, ${profile.approxLng}`}</p>
           <label className="checkbox-label"><input type="checkbox" checked={profile.isAvailable} onChange={(event) => setProfile({ ...profile, isAvailable: event.target.checked })} /> Available to donate</label>
-          <button type="submit" disabled={saving}>{saving ? 'Saving...' : 'Save profile'}</button>
+          <button className="primary-button" type="submit" disabled={saving}>{saving ? 'Saving...' : 'Save profile'}</button>
         </form>
       </section>
     </main>

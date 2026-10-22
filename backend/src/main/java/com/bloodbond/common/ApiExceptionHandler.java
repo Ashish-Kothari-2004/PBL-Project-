@@ -5,6 +5,7 @@ import com.bloodbond.common.exception.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import com.bloodbond.assistant.AssistantUnavailableException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -18,6 +19,13 @@ import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {
+
+    @ExceptionHandler(AssistantUnavailableException.class)
+    public ResponseEntity<Map<String, Object>> handleAssistantUnavailable(
+        AssistantUnavailableException ex, HttpServletRequest request
+    ) {
+        return buildError(HttpStatus.SERVICE_UNAVAILABLE, ex.getMessage(), request.getRequestURI());
+    }
 
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<Map<String, Object>> handleBadRequest(BadRequestException ex, HttpServletRequest request) {

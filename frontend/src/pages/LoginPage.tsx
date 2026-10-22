@@ -33,8 +33,16 @@ export function LoginPage() {
 
   return (
     <main className="auth-shell">
-      <section className="auth-card">
-        <h1>Sign in</h1>
+      <section className="auth-story">
+        <Link className="brand-link" to="/"><span className="brand-mark" aria-hidden="true">B</span><span>bloodbond</span></Link>
+        <h1>Showing up can change <em>everything.</em></h1>
+        <p>Come as you are. Find community, care, and a way to help someone through a difficult moment.</p>
+        <span className="auth-story-note">A little of you can mean a lot to someone.</span>
+      </section>
+      <section className="auth-panel">
+        <p className="eyebrow">Welcome back</p>
+        <h2>Sign in</h2>
+        <p>Pick up where your community needs you.</p>
         <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
           {formError ? <p role="alert">{formError}</p> : null}
           <label>
@@ -49,12 +57,12 @@ export function LoginPage() {
             {errors.password ? <span>{errors.password.message as string}</span> : null}
           </label>
 
-          <button type="submit" disabled={isSubmitting}>
+          <button className="primary-button" type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Signing in...' : 'Login'}
           </button>
         </form>
 
-        <p>
+        <p className="auth-switch">
           Need an account? <Link to="/register">Register</Link>
         </p>
       </section>

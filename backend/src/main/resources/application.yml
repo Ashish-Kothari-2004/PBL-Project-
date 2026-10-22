@@ -1,4 +1,9 @@
 spring:
+  config:
+    import:
+      - optional:file:../.env[.properties]
+      - optional:file:.env[.properties]
+      - optional:file:backend/.env[.properties]
   application:
     name: bloodbond
   datasource:
@@ -28,7 +33,10 @@ management:
 
 bloodbond:
   ai:
-    provider: ${BLOODBOND_AI_PROVIDER:mock}
+    groq:
+      api-key: ${GROQ_API_KEY:}
+      url: ${BLOODBOND_GROQ_URL:https://api.groq.com/openai/v1/chat/completions}
+      model: ${BLOODBOND_GROQ_MODEL:qwen/qwen3.8-27b}
 
 jwt:
   secret: ${JWT_SECRET:change-me-please-32-char-long-secret-key}

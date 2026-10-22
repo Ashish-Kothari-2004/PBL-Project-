@@ -42,6 +42,7 @@ public class SecurityConfig {
         http
             .csrf(AbstractHttpConfigurer::disable)
             .cors(Customizer.withDefaults())
+            .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
@@ -50,7 +51,9 @@ public class SecurityConfig {
                     "/actuator/health",
                     "/swagger-ui/**",
                     "/v3/api-docs/**",
-                    "/swagger-ui.html"
+                    "/swagger-ui.html",
+                    "/h2-console/**",
+                    "/ws/**"
                 ).permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()

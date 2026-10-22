@@ -1,21 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  color: #292622;
+  background: #faf8f4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --paper: #faf8f4;
+  --ink: #292622;
+  --ink-soft: #716b64;
+  --red: #bd4b3f;
+  --red-dark: #98382f;
+  --line: #e6e0d8;
+}
+
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: Inter, 'Segoe UI', sans-serif;
-  background: #f6f8fb;
+  min-width: 320px;
+  background: #9d6d5d;
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
+  min-width: 320px;
   min-height: 100vh;
-  background: #f6f8fb;
-  color: #1f2937;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  background: transparent;
 }
 
 button,
@@ -25,7 +41,33 @@ textarea {
   font: inherit;
 }
 
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(189, 75, 63, 0.35);
+  outline-offset: 3px;
+}
+
 #root {
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
 }
 
+#root::before {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  content: '';
+  background:
+    linear-gradient(110deg, rgba(250, 248, 244, 0.2), rgba(250, 248, 244, 0.12) 48%, rgba(250, 248, 244, 0.18)),
+    url('/bloodbond-sunset.png') center 48% / cover no-repeat;
+  transform: scale(1.015);
+}
